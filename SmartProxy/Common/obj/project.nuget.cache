@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Vy0yGCMpK8TCIngsxRuQmveMWpYSg3y1my4yf0zdCvscbzxnFaioYXFiv2h1ZCGV6W16GFNx+FRXb0VImb9WLg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Evghenia\\Desktop\\PAD\\SmartProxy\\Common\\Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Evghenia\\.nuget\\packages\\mongodb.bson\\2.22.0\\mongodb.bson.2.22.0.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
