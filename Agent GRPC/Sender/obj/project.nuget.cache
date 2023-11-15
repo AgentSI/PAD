@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "P8C+8sBAn9jQTVDIFWTIX1Rw2I8Adx5TeKvPDea7aQjv5hL6PWrKwiITigp0jfQfaogb4SMrd0x7v2iN8CXJSw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Evghenia\\Desktop\\PAD\\Agent GRPC\\Sender\\Sender.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Evghenia\\.nuget\\packages\\google.protobuf\\3.24.3\\google.protobuf.3.24.3.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\grpc\\2.46.6\\grpc.2.46.6.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\grpc.core\\2.46.6\\grpc.core.2.46.6.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\grpc.core.api\\2.46.6\\grpc.core.api.2.46.6.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\grpc.net.client\\2.40.0\\grpc.net.client.2.40.0.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\grpc.net.common\\2.40.0\\grpc.net.common.2.40.0.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\grpc.tools\\2.58.0\\grpc.tools.2.58.0.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
+    "C:\\Users\\Evghenia\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}
