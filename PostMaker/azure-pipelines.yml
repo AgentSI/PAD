@@ -1,0 +1,76 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  name: Default
+  vmImage: windows-2019
+
+steps:
+# Instalează sqlpackage
+- powershell: |
+    choco install sqlpackage -y
+  displayName: 'Install sqlpackage'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)/publish /p:GeneratePublishProfile=true'
+
+- task: MSBuild@1
+  inputs:
+    solution: 'PostMakerDatabase\PostMakerDatabase.sqlproj'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(agent.builddirectory)'
+    Contents: '**/*dacpac'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/publish'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/publish'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Azure Web App Deploy'
+  inputs:
+    azureSubscription: 'Azure for Students(61e9ed5a-234a-4bdb-adce-abc30307ef99)'
+    appType: 'webApp'
+    webappName: 'PadPostMaker'
+    package: '$(Build.ArtifactStagingDirectory)/publish/**/*.zip'
+    enableCustomDeployment: true
+
+- task: SqlAzureDacpacDeployment@1
+  inputs:
+    azureSubscription: 'Azure for Students(61e9ed5a-234a-4bdb-adce-abc30307ef99)'
+    AuthenticationType: 'server'
+    ServerName: 'pad-si.database.windows.net'
+    DatabaseName: 'PostMaker'
+    SqlUsername: 'pad'
+    SqlPassword: 'Parola123'
+    deployType: 'DacpacTask'
+    DeploymentAction: 'Publish'
+    DacpacFile: '$(System.DefaultWorkingDirectory)/**/*dacpac'
+    IpDetectionMethod: 'AutoDetect'

@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+
+<div class="container">
+    <div class="text-end mb-3">
+        <a class="btn btn-success" href="/Home/CreatePost">Crează post</a>
+    </div>
+
+    @if (Model.Posts.Any())
+    {
+        foreach (var post in Model.Posts)
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    Autorul: @post.Author
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@post.Content</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <div>
+                        Postat la: @post.Created.ToString("dd MMM yyyy")
+                    </div>
+                    <div>
+                        <a class="btn btn-primary" href="/Home/EditPost?id=@post.Id">Editează</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Nu sunt postări.</p>
+    }
+</div>
